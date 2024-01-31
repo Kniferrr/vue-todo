@@ -22,7 +22,7 @@ export const addNewUserTask = async (login: string, task: string): Promise<void>
   }
 }
 
-export const deleteUserTask = async (taskIndex: string, login: string) => {
+export const deleteUserTask = async (login: string, taskIndex: string) => {
   try {
     await axios.delete(`${baseUrl}/tasks/${login}`, {
       data: { taskIndex }
@@ -32,11 +32,9 @@ export const deleteUserTask = async (taskIndex: string, login: string) => {
   }
 }
 
-export const completeUserTask = async (task: TaskInterface, login: string) => {
+export const completeUserTask = async (login: string, taskIndex: string) => {
   const taskUrl = `${baseUrl}/tasks/${login}`
-
   try {
-    const taskIndex = task.index
     await axios.patch(taskUrl, { taskIndex })
   } catch (error) {
     console.log(error)

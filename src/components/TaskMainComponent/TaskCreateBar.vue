@@ -4,11 +4,19 @@ import CustomButton from '@/components/UI/CustomButton.vue'
 import CustomInput from '@/components/UI/CustomInput.vue'
 import CustomContainer from '@/components/UI/CustomContainer.vue'
 import { addNewUserTask } from '@/fetch/todoFetch'
+import { useTaskStore } from '@/store/useTaskStore'
+
+const taskStore = useTaskStore()
+const { getTasks } = taskStore
 
 const inputValue: Ref<string> = ref('')
 
 const onSubmitCarateTask = () => {
-  inputValue.value && addNewUserTask('Knifer', inputValue.value)
+  if (inputValue.value) {
+    addNewUserTask('Knifer', inputValue.value)
+    getTasks()
+    inputValue.value = ''
+  }
 }
 </script>
 

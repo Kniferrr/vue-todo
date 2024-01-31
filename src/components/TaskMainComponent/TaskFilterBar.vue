@@ -3,22 +3,19 @@ import { ref } from 'vue'
 import CustomContainer from '@/components/UI/CustomContainer.vue'
 import CustomButton from '@/components/UI/CustomButton.vue'
 import { FilterStatus, type filterType } from '@/types/TaskFilterBar'
+import { useTaskStore } from '@/store/useTaskStore'
 
-const sortValue = ref(FilterStatus.ALL)
-const cengeIntut = (value: filterType) => {
-  sortValue.value = value
-}
+const taskStore = useTaskStore()
+const { setFilterType } = taskStore
 </script>
 
 <template>
   <CustomContainer>
-    <CustomButton class="taskfilterbar-button" @click="() => cengeIntut(FilterStatus.ALL)"
-      >ALL</CustomButton
-    >
-    <CustomButton class="taskfilterbar-button" @click="() => cengeIntut(FilterStatus.COMPLETED)"
+    <CustomButton class="taskfilterbar-button" @click="() => setFilterType(null)">ALL</CustomButton>
+    <CustomButton class="taskfilterbar-button" @click="() => setFilterType(false)"
       >COMPLETED</CustomButton
     >
-    <CustomButton class="taskfilterbar-button" @click="() => cengeIntut(FilterStatus.UNCOMPLETED)"
+    <CustomButton class="taskfilterbar-button" @click="() => setFilterType(true)"
       >UNCOMPLETED</CustomButton
     >
   </CustomContainer>

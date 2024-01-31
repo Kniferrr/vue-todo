@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import TaskSearchBar from '../components/TaskSearchBar.vue'
-import TaskCreateBar from '../components/TaskCreateBar.vue'
-import TaskFilterBar from '../components/TaskFilterBar.vue'
-import TaskList from '../components/TaskList.vue'
+import TaskSearchBar from '@/components/TaskMainComponent/TaskSearchBar.vue'
+import TaskCreateBar from '@/components/TaskMainComponent/TaskCreateBar.vue'
+import TaskFilterBar from '@/components/TaskMainComponent/TaskFilterBar.vue'
+import TaskList from '@/components/TaskMainComponent/TaskList.vue'
 </script>
 
 <template>

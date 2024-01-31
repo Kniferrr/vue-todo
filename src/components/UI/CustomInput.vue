@@ -1,16 +1,24 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch, type Ref } from 'vue'
 
-const inputValue = ref('')
-
-defineProps({
+const props = defineProps({
   childInputValue: String
 })
+
+const inputValue = ref(props.childInputValue || '')
+
 const emits = defineEmits(['update:childInputValue'])
 
 const sendValueToParent = () => {
   emits('update:childInputValue', inputValue.value)
 }
+
+watch(
+  () => props.childInputValue,
+  (newValue) => {
+    inputValue.value = newValue || ''
+  }
+)
 </script>
 
 <template>

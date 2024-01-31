@@ -28,14 +28,11 @@ app.post('/task/:username', (req, res) => {
     if (!tasks[username]) {
       res.status(404).json({ error: 'Пользователь не найден' })
     } else {
-      tasks[username].push(
-        tasks[username].push({
-          ...task,
-          index: CreateIdTask(tasks[username]),
-          completed: false
-        })
-      )
-      console.log(task)
+      tasks[username].push({
+        ...task,
+        index: CreateIdTask(tasks[username]),
+        completed: false
+      })
       res.status(201).json({ message: 'Задача добавлена' })
     }
   }
